@@ -1,0 +1,304 @@
+对比比较得到参数的较优设置情况：
+(此处的sub(50%)默认为正例选50%负例全选,ts没有注明的即是0.85)
+sub(50%) n12, 0.6, gini
+[[  25   33    0]
+ [   0 5998    0]
+ [   0   10   39]]
+             precision    recall  f1-score   support
+
+          0       1.00      0.43      0.60        58
+          1       0.99      1.00      1.00      5998
+          2       1.00      0.80      0.89        49
+
+sub(50%) n99, 0.6, gini:
+[[  26   32    0]
+ [   1 5997    0]
+ [   0    8   41]]
+             precision    recall  f1-score   support
+
+          0       0.96      0.45      0.61        58
+          1       0.99      1.00      1.00      5998
+          2       1.00      0.84      0.91        49
+
+
+sub(50%) n999, 0.6, gini:
+[[  26   32    0]
+ [   0 5998    0]
+ [   0    9   40]]
+             precision    recall  f1-score   support
+
+          0       1.00      0.45      0.62        58
+          1       0.99      1.00      1.00      5998
+          2       1.00      0.82      0.90        49
+
+sub(50%) n999, 0.3, gini:
+[[  21   37    0]
+ [   0 5996    2]
+ [   0   12   37]]
+             precision    recall  f1-score   support
+
+          0       1.00      0.36      0.53        58
+          1       0.99      1.00      1.00      5998
+          2       0.95      0.76      0.84        49
+
+
+sub(50%) n99, 0.6,  entropy: *
+[[  25   33    0]
+ [   0 5998    0]
+ [   0    8   41]]
+             precision    recall  f1-score   support
+
+          0       1.00      0.43      0.60        58
+          1       0.99      1.00      1.00      5998
+          2       1.00      0.84      0.91        49
+
+sub(50%) n999, 0.6, entropy: *
+[[  25   33    0]
+ [   0 5998    0]
+ [   0    9   40]]
+             precision    recall  f1-score   support
+
+          0       1.00      0.43      0.60        58
+          1       0.99      1.00      1.00      5998
+          2       1.00      0.82      0.90        49
+
+
+sub(50%) n999, 0.3, entropy: *
+[[  22   36    0]
+ [   0 5998    0]
+ [   0   12   37]]
+             precision    recall  f1-score   support
+
+          0       1.00      0.38      0.55        58
+          1       0.99      1.00      1.00      5998
+          2       1.00      0.76      0.86        49
+
+sub(50%) n999, 0.9, entropy: *
+[[  29   29    0]
+ [   0 5998    0]
+ [   0    7   42]]
+             precision    recall  f1-score   support
+
+          0       1.00      0.50      0.67        58
+          1       0.99      1.00      1.00      5998
+          2       1.00      0.86      0.92        49
+
+sub(50%) n999, 1.0, entropy: *
+[[  27   31    0]
+ [   1 5997    0]
+ [   0    7   42]]
+             precision    recall  f1-score   support
+
+          0       0.96      0.47      0.63        58
+          1       0.99      1.00      1.00      5998
+          2       1.00      0.86      0.92        49
+
+sub(50%) n99999, 0.05, entropy: *
+[[   6   52    0]
+ [   0 5998    0]
+ [   0   28   21]]
+             precision    recall  f1-score   support
+
+          0       1.00      0.10      0.19        58
+          1       0.99      1.00      0.99      5998
+          2       1.00      0.43      0.60        49
+
+在4w集上直接做：
+
+4w n99, 0.65, entropy: 
+[[  13   11    0]
+ [   0 5957    0]
+ [   0    1   18]]
+             precision    recall  f1-score   support
+
+          0       1.00      0.54      0.70        24
+          1       1.00      1.00      1.00      5957
+          2       1.00      0.95      0.97        19
+
+4w n999, 0.65, entropy: 
+[[  12   12    0]
+ [   0 5957    0]
+ [   0    1   18]]
+             precision    recall  f1-score   support
+
+          0       1.00      0.50      0.67        24
+          1       1.00      1.00      1.00      5957
+          2       1.00      0.95      0.97        19
+
+对比新旧4w集以及去掉新集上新添特征后的三类分类效果：
+4w_1 n99, 0.65,entropy:
+[[  10   19    0]
+ [   0 5948    0]
+ [   0    4   19]]
+             precision    recall  f1-score   support
+
+          0       1.00      0.34      0.51        29
+          1       1.00      1.00      1.00      5948
+          2       1.00      0.83      0.90        23
+
+4w_1 n999, 0.65,entropy:
+[[  11   18    0]
+ [   0 5948    0]
+ [   0    1   22]]
+             precision    recall  f1-score   support
+
+          0       1.00      0.38      0.55        29
+          1       1.00      1.00      1.00      5948
+          2       1.00      0.96      0.98        23
+
+4w_new n99, 0.65,entropy:
+[[  30   12    0]
+ [   2 5390    0]
+ [   0    4   23]]
+             precision    recall  f1-score   support
+
+          0       0.94      0.71      0.80        42
+          1       1.00      1.00      1.00      5392
+          2       1.00      0.85      0.91        27
+
+4w_new n999, 0.65,entropy:
+[[  28   14    0]
+ [   1 5391    0]
+ [   0    6   21]]
+             precision    recall  f1-score   support
+
+          0       0.97      0.67      0.79        42
+          1       1.00      1.00      1.00      5392
+          2       1.00      0.78      0.88        27
+
+4w_new（droped new col） n99, 0.65, entropy:
+[[  28   14    0]
+ [   1 5391    0]
+ [   0    5   22]]
+             precision    recall  f1-score   support
+
+          0       0.97      0.67      0.82        42
+          1       1.00      1.00      1.00      5392
+          2       1.00      0.81      0.90        27
+
+4w_new（droped new col） n99, 0.65, ts0.7, entropy:
+[[   55    35     0]
+ [    2 10772     0]
+ [    0    11    47]]
+             precision    recall  f1-score   support
+
+          0       0.96      0.61      0.75        90
+          1       1.00      1.00      1.00     10774
+          2       1.00      0.81      0.90        58
+
+4w_new（droped new col） n333, 0.65, entropy:
+[[  34   21    0]
+ [   1 7188    0]
+ [   0    8   29]]
+             precision    recall  f1-score   support
+
+          0       0.97      0.62      0.76        55
+          1       1.00      1.00      1.00      7189
+          2       1.00      0.78      0.88        37
+
+
+4w_new（droped new col） n999, 0.65, entropy:
+[[  28   14    0]
+ [   1 5391    0]
+ [   0    6   21]]
+             precision    recall  f1-score   support
+
+          0       0.97      0.67      0.79        42
+          1       1.00      1.00      1.00      5392
+          2       1.00      0.78      0.88        27
+
+
+
+
+sub子集参考数据:
+
+4w_new sub（0.5， 0.5）（droped new col） n99, 0.65, ts0.7,entropy:
+[[  31   18    0]
+ [   2 5382    0]
+ [   0    9   19]]
+             precision    recall  f1-score   support
+
+          0       0.94      0.63      0.75        49
+          1       1.00      1.00      1.00      5384
+          2       1.00      0.68      0.80        28
+
+4w_new sub(0.2，0.85)（droped new col） n99, 0.65, ts0.7,entropy:
+[[  47   21    0]
+ [   2 2163    0]
+ [   0    6   35]]
+             precision    recall  f1-score   support
+
+          0       0.96      0.69      0.80        68
+          1       0.99      1.00      0.99      2165
+          2       1.00      0.85      0.92        41
+
+4w_new sub(50%)（droped new col） n99, 0.65, ts0.7,entropy:
+[[  59   26    0]
+ [   1 5995    0]
+ [   0    9   48]]
+             precision    recall  f1-score   support
+
+          0       0.98      0.69      0.81        85
+          1       0.99      1.00      1.00      5996
+          2       1.00      0.84      0.91        57
+
+4w_new sub(50%)（droped new col） n99, 0.65, ts0.85,entropy:
+[[  29   18    0]
+ [   0 2992    0]
+ [   0    5   25]]
+             precision    recall  f1-score   support
+
+          0       1.00      0.62      0.76        47
+          1       0.99      1.00      1.00      2992
+          2       1.00      0.83      0.91        30
+
+
+
+
+4w_new sub(0.2，0.85)（droped new col） n99, 0.65, ts0.7,entropy:
+测试集用4w全体时:
+[[  253    40     0]
+ [   42 35903     1]
+ [    0    18   147]]
+             precision    recall  f1-score   support
+
+          0       0.86      0.86      0.86       293
+          1       1.00      1.00      1.00     35946
+          2       0.99      0.89      0.94       165
+
+4w_new sub(0.25，0.95)（droped new col） n99, 0.65, ts0.7,entropy:
+测试集用4w全体时:
+[[  257    36     0]
+ [   39 35906     1]
+ [    0    13   152]]
+             precision    recall  f1-score   support
+
+          0       0.87      0.88      0.87       293
+          1       1.00      1.00      1.00     35946
+          2       0.99      0.92      0.96       165
+
+4w_new sub(0.55，0.95)（droped new col） n99, 0.65, ts0.7,entropy:
+测试集用4w全体时:
+[[  251    42     0]
+ [    4 35941     1]
+ [    0    22   143]]
+             precision    recall  f1-score   support
+
+          0       0.98      0.86      0.92       293
+          1       1.00      1.00      1.00     35946
+          2       0.99      0.87      0.93       165
+
+4w_new sub(0.85，0.95)（droped new col） n99, 0.65, ts0.7,entropy:
+测试集用4w全体时:
+[[  239    54     0]
+ [    3 35943     0]
+ [    0    22   143]]
+             precision    recall  f1-score   support
+
+          0       0.99      0.82      0.89       293
+          1       1.00      1.00      1.00     35946
+          2       1.00      0.87      0.93       165
+
+
+
+
